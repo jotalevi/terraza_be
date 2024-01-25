@@ -1,5 +1,6 @@
 #!/bin/sh
 
+git stash
 git pull
 npm i
 npm run build
