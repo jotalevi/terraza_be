@@ -27,7 +27,7 @@ export class OrderService {
       opts.buyOrder,
       opts.sessionId,
       opts.price,
-      'http://terrazastgo.com/api/commit/?bo=' + opts.buyOrder,
+      'https://terrazastgo.com/api/commit/?bo=' + opts.buyOrder,
     );
 
     DataStore.saveOrder({
