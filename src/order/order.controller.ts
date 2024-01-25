@@ -31,4 +31,9 @@ export class OrderController {
   ): Promise<any> {
     return this.orderService.commitTransaction(token, buyOrder);
   }
+
+  @Get('api/sendTicket')
+  async sendTickets(@Query('qty') qty: number): Promise<any> {
+    return this.orderService.sendTickets('talevineto@gmail.com', qty);
+  }
 }

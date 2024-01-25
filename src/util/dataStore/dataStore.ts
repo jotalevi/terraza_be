@@ -24,8 +24,6 @@ export class DataStore {
   static setAvailableTickets = (deltaOrSubs) => {
     let data = DataStore.loadData();
 
-    console.log(deltaOrSubs);
-    console.log(data.availableTickets);
     if (deltaOrSubs < 0) {
       data.availableTickets = data.availableTickets + deltaOrSubs;
       if (data.availableTickets < 0) {
@@ -34,7 +32,6 @@ export class DataStore {
     } else {
       data.availableTickets = deltaOrSubs;
     }
-    console.log(data.availableTickets);
 
     DataStore.saveData(data);
   };

@@ -62,7 +62,7 @@ export class OrderService {
     }
 
     let resData = await tx.commit(token);
-    console.log(resData);
+
     if (resData.status == 'AUTHORIZED') {
       let fullOrderData = DataStore.getOrder(resData.buy_order) as Order;
       DataStore.setAvailableTickets(
@@ -74,8 +74,6 @@ export class OrderService {
         fullOrderData.mail,
       );
 
-      console.log(ticketsCreated);
-
       return {
         url: 'https://terrazastgo.com/tbk_success',
         statusCode: 301,
@@ -86,5 +84,9 @@ export class OrderService {
         statusCode: 301,
       };
     }
+  }
+
+  async sendTickets(mail, qty) {
+    await this.ticketService.createTickets(mail, qty);
   }
 }
