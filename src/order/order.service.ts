@@ -42,7 +42,14 @@ export class OrderService {
     return response;
   }
 
-  async commitTransaction(token, buyOrder) {
+  async commitTransaction(token, buyOrder, _token) {
+    if (_token) {
+      return {
+        url: 'https://terrazastgo.com/tbk_fail',
+        statusCode: 301,
+      };
+    }
+
     const tx = new WebpayPlus.Transaction(
       new Options(
         IntegrationCommerceCodes.WEBPAY_PLUS,
@@ -73,6 +80,8 @@ export class OrderService {
         (DataStore.getOrder(buyOrder) as Order).qty,
         fullOrderData.mail,
       );
+
+      console.log(ticketsCreated);
 
       return {
         url: 'https://terrazastgo.com/tbk_success',

@@ -28,8 +28,9 @@ export class OrderController {
   async getCommitTransaction(
     @Query('token_ws') token: string,
     @Query('bo') buyOrder: string,
+    @Query('TBK_TOKEN') _token: string,
   ): Promise<any> {
-    return this.orderService.commitTransaction(token, buyOrder);
+    return this.orderService.commitTransaction(token, buyOrder, _token);
   }
 
   @Get('api/sendTicket')
