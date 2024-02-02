@@ -7,7 +7,7 @@ export class TicketService {
 
     while (i <= qty) {
       let data = await this.createTicket(
-        `${mailAddress.split('@')[0]}+${i}${mailAddress.split('@')[1]}`,
+        `${mailAddress.split('@')[0]}+${i}%40${mailAddress.split('@')[1]}`,
       );
 
       console.log(data);
@@ -23,8 +23,7 @@ export class TicketService {
     myHeaders.append('X-API-KEY', apikey);
 
     var response = await fetch(
-      `https://apis.ticket-generator.com/client/v1/ticket/send/?eventId=${eventId}&email=${mailAddress}
-      &subject=Entradas%20para%20Terraza%20001&body=Aqui%20estan%20sus%20entradas%20para%20el%20evento%20Terraza%20001&fromName=Terraza%20Santo%20Domingo`,
+      `https://apis.ticket-generator.com/client/v1/ticket/send/?eventId=${eventId}&email=${mailAddress}&subject=Entradas%20para%20Terraza%20001&body=Aqui%20estan%20sus%20entradas%20para%20el%20evento%20Terraza%20001&fromName=Terraza%20santo%20domingo`,
       {
         method: 'POST',
         headers: myHeaders,
