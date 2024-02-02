@@ -32,6 +32,8 @@ export class TicketService {
       },
     );
 
+    console.log(response);
+
     return response;
   }
 }
